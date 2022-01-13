@@ -15,6 +15,12 @@ from sartools.estima import(    # paquete.modulo  en el paquete estará el __ini
     DirectaReverse
 )
 
+# Crea el directorio SPReport
+try:
+    os.stat("./SPReport")
+except:
+    os.mkdir("./SPReport")
+
 lat0 = float(input("\n\tLATITUD GG.ggg\t\t\t:  "))
 lon0 = float(input("\n\tLONGITUD GGG.ggg\t\t:  "))
 rumbo0 = float(input("\n\tRUMBO INICIAL\t\t\t:  "))
@@ -78,5 +84,7 @@ with open("./SPReport/{}_SPReportNMEA.csv".format(pattern_name.upper()), "w") as
 
 print(wpList[2])
 
+
+# Uso de Pandas 
 #df = pd.read_excel('C:\\Users\\cesai\\Desktop\\SARIApp Python\\SPReport\\XX_SPReportNMEA.csv')
 #df.head()
