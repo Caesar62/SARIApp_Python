@@ -85,6 +85,6 @@ with open("./SPReport/{}_SPReportNMEA.csv".format(pattern_name.upper()), "w") as
 print(wpList[2])
 
 
-# Uso de Pandas 
+# Uso de Pandas. Extracción de datos
 #df = pd.read_excel('C:\\Users\\cesai\\Desktop\\SARIApp Python\\SPReport\\XX_SPReportNMEA.csv')
 #df.head()
