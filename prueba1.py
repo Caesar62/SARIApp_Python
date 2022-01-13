@@ -86,5 +86,5 @@ print(wpList[2])
 
 
 # Uso de Pandas. Extracción de datos
-#df = pd.read_excel('C:\\Users\\cesai\\Desktop\\SARIApp Python\\SPReport\\XX_SPReportNMEA.csv')
+#df = pd.read_excel('C:/Users/cesai/Desktop/SARIApp Python/SPReport/XX_SPReportNMEA.csv')
 #df.head()
