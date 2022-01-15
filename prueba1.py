@@ -20,7 +20,8 @@ try:
     os.stat("./SPReport")
 except:
     os.mkdir("./SPReport")
-
+    
+# Entrada de datos
 lat0 = float(input("\n\tLATITUD GG.ggg\t\t\t:  "))
 lon0 = float(input("\n\tLONGITUD GGG.ggg\t\t:  "))
 rumbo0 = float(input("\n\tRUMBO INICIAL\t\t\t:  "))
@@ -30,9 +31,11 @@ leg_spacing = float(input("\n\tLEG SPACING\t\t\t:  "))
 giro = input("\n\tSENSE (GIRO) L OR R\t\t:  ")
 pattern_name = input("\n\tPATTERN NAME\t\t\t:  ")
 
+# Calculo del número de patas a ejecutar
 num_legs = int(pattern_width//leg_spacing+1)
 print(num_legs)
 
+# Calculo del Rumbos y distancias de cada una de las patas a ejecutar
 num_wps = num_legs*2
 num_tracks = num_legs*2-1
 rumboDistancia = []
