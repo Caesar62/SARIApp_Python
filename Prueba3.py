@@ -5,6 +5,7 @@ import json
 import math
 import os
 import webbrowser
+
 from sartools.estima import(    # paquete.modulo  en el paquete estará el __init__.py
     quita360,
     deg_to_rad,
@@ -22,6 +23,7 @@ pattern_width = 5
 leg_length = 10
 leg_spacing = 1
 rumbo0 = 45
+pattern_name = 'prueba'
 
 num_legs = int(pattern_width//leg_spacing + 1)
 num_tracks = num_legs*2-1 # 11
@@ -59,3 +61,15 @@ print()
 print(wpList)
 print()
 print(len(wpList))
+
+################## NMEA .CSV ##########################
+with open("./SPReport/{}_SPReportNMEA.csv".format(pattern_name.upper()), "w") as text_file:
+    for d in range(len(wpList)):
+        print('{},{},{},Pt.{}'.format(d,
+            (formalat(wpList[d][0])),
+            (formalon(wpList[d][1])),
+            d), file=text_file)
+
+# Uso de Pandas. Extracción de datos
+df = pd.read_excel('PRUEBA_SPReportNMEA.csv', sep = ",")
+df.head()
