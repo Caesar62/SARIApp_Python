@@ -24,8 +24,8 @@ leg_spacing = 1
 rumbo0 = 45
 
 num_legs = int(pattern_width//leg_spacing + 1)
-num_tracks = num_legs*2-1
-num_wps = num_legs*2
+num_tracks = num_legs*2-1 # 11
+num_wps = num_legs*2 # 12
 rumboDistancia = []
 wpList = [[lat0, lon0]]
 
@@ -48,6 +48,7 @@ else:
         rumboDistancia = rumboDistancia[0:num_tracks]
         
 print(rumboDistancia)
+print(len(rumboDistancia))
 
 # LISTA DE WAYPOINTS [lat, lon]   wpList
 for w in range(num_wps-1):
