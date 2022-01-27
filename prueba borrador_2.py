@@ -46,18 +46,7 @@ def datum():
     boton1=tk.Button(datum, text='ENTER', bg = "gray", fg="white")
     boton1.place(x=600, y=550, width=100, height=30)
     
-    # Asigna datetime de la fecha actual
-    fecha1 = datetime(1995, 11, 5, 10, 0, 0)
-
-    # Asigna datetime específica
-    fecha2 = datetime(1995, 11, 3, 9, 0, 0)
-    diferencia = fecha1 - fecha2
-    print("Fecha1:", fecha1)
-    print("Fecha2:", fecha2)
-    print("Diferencia:", diferencia)
-    print('Diferencia: ', diferencia.hours*24, ' horas')
-      
-
+    
 # Botón
 boton=tk.Button(text='ENTER', bg = "gray", fg="white", command = datum)
 boton.place(x=175, y=300, width=100, height=30)
