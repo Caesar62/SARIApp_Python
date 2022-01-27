@@ -7,8 +7,8 @@ from PIL import Image, ImageTk
 root = tk.Tk()
 #root.geometry('+%d+%d'%(400,300)) #Place GUI at x=350, y=10
 #root.config(bg='blue')
-root.title('Ejemplo de Imagenes')
-canvas=tk.Canvas(root, width=700, height=600)
+root.title('SARIApp v.22.0')
+canvas=tk.Canvas(root, width=300, height=400)
 canvas.grid(columnspan=5, rowspan=5)
 
 '''
@@ -19,18 +19,26 @@ root.title('Ejemplo de Imagenes')
 '''
 #Creación de imagenes
 #Imagen 1
-imagen1=PhotoImage(file='Imagenes/HELO1_tranp.png')
+imagen1=PhotoImage(file='C:/GitHub Projects/SARIApp_Python/Imagenes/HELO1_tranp.png')
 imagen1 = imagen1.subsample(2, 2) 
-label_imagen1=Label(root, image=imagen1).grid(column=1, row=1)
+label_imagen1=Label(root, image=imagen1).grid(column=0, row=1)
 '''
 #Imagen 2
-imagen2=PhotoImage(file='Imagenes/HELO.png')
-imagen2 = imagen2.subsample(2, 2) 
+imagen2=PhotoImage(file='C:/GitHub Projects/SARIApp_Python/Imagenes/HELO.png')
+imagen2 = imagen2.subsample(3, 4) 
 label_imagenL=Label(root, image=imagen2).grid(column=2, row=1, padx= 0, pady=20)
 '''
 
 # Botón
-boton=tk.Button(text='Hola mundo', bg = "blue", fg="white")
-boton.place(x=250, y=370, width=100, height=30)
+boton=tk.Button(text='ENTER', bg = "gray", fg="white")
+boton.place(x=175, y=300, width=100, height=30)
+
+# Copyright
+copyright= Label(root, text="Cesar Sainz©", font=('Raleway', 7), fg="blue")
+copyright.place(x=400, y=380)
+
+# Instrucción
+instruction= Label(root, text="Para ejecutar el SARIApp, pulsa ENTER", font=('Raleway', 9))
+instruction.place(x=10, y=380)
 
 root.mainloop()
