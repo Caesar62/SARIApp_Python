@@ -4,6 +4,8 @@ from tkinter import *
 from tkinter.filedialog import askopenfile
 from PIL import Image, ImageTk
 
+from datetime import datetime, date, time, timedelta
+
 root = tk.Tk()
 #root.geometry('+%d+%d'%(400,300)) #Place GUI at x=350, y=10
 #root.config(bg='blue')
@@ -34,11 +36,26 @@ def datum():
     datum = Toplevel(root) 
     datum.title("SARIApp_Data") 
     datum.geometry("1360x768")
-    Label(datum, text ="This is a new window").pack()
+    Label(datum, text ="Introducir Datos del IAMSAR", font=('Raleway', 12)).pack()
+    
+    # Copyright
+    fecha_lkp= Label(root, text="Fecha del LKP: ", font=('Raleway', 7), fg="blue")
+    copyright.place(x=400, y=380)
     
     # Botón
     boton1=tk.Button(datum, text='ENTER', bg = "gray", fg="white")
     boton1.place(x=600, y=550, width=100, height=30)
+    
+    # Asigna datetime de la fecha actual
+    fecha1 = datetime(1995, 11, 5, 10, 0, 0)
+
+    # Asigna datetime específica
+    fecha2 = datetime(1995, 11, 3, 9, 0, 0)
+    diferencia = fecha1 - fecha2
+    print("Fecha1:", fecha1)
+    print("Fecha2:", fecha2)
+    print("Diferencia:", diferencia)
+    print('Diferencia: ', diferencia.hours*24, ' horas')
       
 
 # Botón

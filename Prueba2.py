@@ -1,37 +1,11 @@
-from tkinter import * 
-from tkinter.ttk import *
-  
-master = Tk() 
-  
-master.geometry("200x200") 
-  
-  
-def openNewWindow(): 
-      
-    
-    
-    newWindow = Toplevel(master) 
-  
-    
-    
-    newWindow.title("New Window") 
-  
-    
-    newWindow.geometry("200x200") 
-  
-    
-    Label(newWindow,  
-          text ="This is a new window").pack() 
-  
-  
-label = Label(master,  
-              text ="This is the main window") 
-  
-label.pack(pady = 10) 
-  
-btn = Button(master,  
-             text ="Click to open a new window",  
-             command = openNewWindow) 
-btn.pack(pady = 10) 
-  
-mainloop() 
+from datetime import datetime
+
+while True:
+   try:
+       fecha_str = input('\n Ingrese fecha ==> ejemplo "18/01/1952"...: ')
+       fecha = datetime.strptime(fecha_str, '%d/%m/%Y %H:%M')
+       break
+   except:
+       print("\n No ha ingresado una fecha correcta...")
+
+print("\n ", fecha)
