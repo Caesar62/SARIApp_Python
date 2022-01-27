@@ -8,7 +8,7 @@ root = tk.Tk()
 #root.geometry('+%d+%d'%(400,300)) #Place GUI at x=350, y=10
 #root.config(bg='blue')
 root.title('Ejemplo de Imagenes')
-canvas=tk.Canvas(root, width=700, height=600)
+canvas=tk.Canvas(root, width=700, height=400)
 canvas.grid(columnspan=5, rowspan=5)
 
 '''

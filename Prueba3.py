@@ -5,7 +5,6 @@ import json
 import math
 import os
 import webbrowser
-
 from sartools.estima import(    # paquete.modulo  en el paquete estará el __init__.py
     quita360,
     deg_to_rad,
