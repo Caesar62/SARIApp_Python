@@ -35,19 +35,42 @@ def datum():
     
     datum = Toplevel(root) 
     datum.title("SARIApp_Data") 
-    datum.geometry("1360x768")
-    Label(datum, text ="Introducir Datos del IAMSAR", font=('Raleway', 12)).pack()
+    datum.geometry("600x400")
+    Label(datum, text ="Introducir Datos del IAMSAR", font=('Raleway 14 underline' )).pack()
     
-    # Copyright
-    fecha_lkp= Label(root, text="Fecha del LKP: ", font=('Raleway', 7), fg="blue")
-    copyright.place(x=400, y=380)
+    # Botón SALIR
+    boton1=tk.Button(datum, text='SALIR', bg = "gray", fg="white", command=quit)
+    boton1.place(x=280, y=350, width=100, height=30)
     
-    # Botón
-    boton1=tk.Button(datum, text='ENTER', bg = "gray", fg="white")
-    boton1.place(x=600, y=550, width=100, height=30)
+    # Fecha LKP
+    fecha_LKP=Label(datum, text='Fecha LKP: ', font=('Raleway', 11))
+    fecha_LKP.place(x=50, y=50)
+    entrada1=Entry(datum)
+    entrada1.place(x=150, y=50)
     
+    # Hora LKP
+    hora_LKP=Label(datum, text='Hora LKP: ', font=('Raleway', 11))
+    hora_LKP.place(x=300, y=50)
+    entrada2=Entry(datum)
+    entrada2.place(x=400, y=50)
     
-# Botón
+    # POSICION EN LATITUD Y LONGITUD
+    
+    Label(datum, text ="Posición LKP", font=('Raleway', 12)).place(x=240, y=110)
+    
+    # Latitud LKP
+    latitud_LKP=Label(datum, text='Latitud: ', font=('Raleway', 11))
+    latitud_LKP.place(x=50, y=150)
+    entrada3=Entry(datum)
+    entrada3.place(x=150, y=150)
+
+    # Longitud LKP
+    longitud_LKP=Label(datum, text='Longitud: ', font=('Raleway', 11))
+    longitud_LKP.place(x=300, y=150)
+    entrada4=Entry(datum)
+    entrada4.place(x=400, y=150)
+
+# Botón ENTER
 boton=tk.Button(text='ENTER', bg = "gray", fg="white", command = datum)
 boton.place(x=175, y=300, width=100, height=30)
 
