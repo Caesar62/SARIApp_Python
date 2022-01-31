@@ -20,8 +20,9 @@ root.config(bg='blue')
 root.title('Ejemplo de Imagenes')
 '''
 #Creación de imagenes
+route='D:/GitHub Project/SARIApp_Python/Imagenes/'
 #Imagen 1
-imagen1=PhotoImage(file='Imagenes/HELO1_tranp.png')
+imagen1=PhotoImage(file=route +'HELO1_tranp.png')
 imagen1 = imagen1.subsample(2, 2) 
 label_imagen1=Label(root, image=imagen1).grid(column=0, row=1)
 '''
