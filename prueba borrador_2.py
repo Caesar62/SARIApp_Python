@@ -3,7 +3,7 @@ from tkinter import ttk
 from tkinter import *
 from tkinter.filedialog import askopenfile
 from PIL import Image, ImageTk
-
+import datetime
 from datetime import datetime, date, time, timedelta
 
 root = tk.Tk()
@@ -34,42 +34,110 @@ label_imagenL=Label(root, image=imagen2).grid(column=2, row=1, padx= 0, pady=20)
 
 def datum(): 
     
-    datum = Toplevel(root) 
+    datum = Toplevel() 
     datum.title("SARIApp_Data") 
     datum.geometry("600x400")
     Label(datum, text ="Introducir Datos del IAMSAR", font=('Raleway 14 underline' )).pack()
+
+    # INCLUIMOS PANEL PARA LAS PESTAÑAS
+    nb=ttk.Notebook(datum)
+    nb.pack(fill='both', expand='yes')
+
+    # CREAMOS PESTAÑAS
+    p1=ttk.Frame(nb)
+    p2=ttk.Frame(nb)
+    
+    # AGREGAMOS PESTAÑAS
+    nb.add(p1, text='Pestaña1')
+    nb.add(p2, text='Pestaña2')
+    
+
+    # Fecha Hora LKP
+    fecha_LKP=Label(p1, text='Fecha LKP: ', font=('Raleway', 11))
+    fecha_LKP.place(x=150, y=50)
+    time0=tk.StringVar()
+    entrada1=Entry(p1, textvariable=time0)
+    entrada1.place(x=250, y=50)
+    
+    # Fecha Hora Datum
+    fecha_datum=Label(p1, text='Fecha Datum: ', font=('Raleway', 11))
+    fecha_datum.place(x=150, y=200)
+    time1=tk.StringVar()
+    entrada2=Entry(p1, textvariable=time1)
+    entrada2.place(x=250, y=200)
+    
+    # POSICION EN LATITUD Y LONGITUD
+    
+    Label(datum, text ="Posición LKP", font=('Raleway', 12)).place(x=240, y=100)
+    
+    # Latitud LKP
+    latitud_LKP=Label(p1, text='Latitud: ', font=('Raleway', 11))
+    latitud_LKP.place(x=50, y=150)
+    plat0=tk.StringVar()
+    entrada3=Entry(p1, textvariable=plat0)
+    entrada3.place(x=150, y=150)
+
+    # Longitud LKP
+    longitud_LKP=Label(p1, text='Longitud: ', font=('Raleway', 11))
+    longitud_LKP.place(x=300, y=150)
+    plon0=tk.StringVar()
+    entrada4=Entry(p1, textvariable=plon0)
+    entrada4.place(x=400, y=150)
+    
+    # Diferencia en horas
+    labeldif=Label(p1, text='Diferencia: ', font=('Raleway', 11))
+    labeldif.place(x=250, y=250)
+    dif=tk.StringVar()
+    entrada5=Label(p1, textvariable=dif)
+    entrada5.place(x=500, y=150)
+    
+    def cambio_posicion():
+        # Pasar la latitud de ggmm.mN/S a gg.ggg
+        lat0=plat0.get()
+        latg=lat0[0:2]
+        latm=lat0[2:6]
+        latf=lat0[6:7]
+        lat0=(float(latg)+float(latm)/60)
+        if latf != "N":
+            lat0 = 0 - lat0
+            
+        # Pasar la Longitud de gggmm.mE/W a gg.ggg
+        lon0=plon0.get()
+        long=lon0[0:3]
+        lonm=lon0[3:7]
+        lonf=lon0[7:8]
+        lon0=(float(long)+float(lonm)/60)
+        if lonf != "E":
+            lon0 = 0 - lon0
+        
+        # Transformacion del intervalo en horas 
+        string_date = time0.get()
+        format = "%d/%m/%Y %H:%M"
+        datetime_object = datetime.strptime(string_date, format)
+        
+        string_date_2 = time1.get()
+        format = "%d/%m/%Y %H:%M"
+        datetime_object_2 = datetime.strptime(string_date_2, format)
+        
+        diferencia_days= (datetime_object_2 - datetime_object)/ timedelta(days=1)
+        diferencia_horas=diferencia_days*24
+        diferencia_horas=('{0:.2f}'.format(diferencia_horas))
+                
+        #labeltime=Label(datum, text=datetime_object).place(x=400, y=50)
+        #labellat=Label(datum, text =lat0).place(x=250, y=100)
+        #labellon=Label(datum, text =lon0).place(x=500, y=100)
+        #labeltime2=Label(datum, text=datetime_object_2).place(x=400, y=200)
+        labeldif_time=Label(datum, text=diferencia_horas).place(x=400, y=250)
+        
+    # Botón ENTER2
+    boton=tk.Button(datum, text='ENTER', bg = "gray", fg="white", command = cambio_posicion)
+    boton.place(x=175, y=350, width=100, height=30)
     
     # Botón SALIR
     boton1=tk.Button(datum, text='SALIR', bg = "gray", fg="white", command=quit)
     boton1.place(x=280, y=350, width=100, height=30)
     
-    # Fecha LKP
-    fecha_LKP=Label(datum, text='Fecha LKP: ', font=('Raleway', 11))
-    fecha_LKP.place(x=50, y=50)
-    entrada1=Entry(datum)
-    entrada1.place(x=150, y=50)
     
-    # Hora LKP
-    hora_LKP=Label(datum, text='Hora LKP: ', font=('Raleway', 11))
-    hora_LKP.place(x=300, y=50)
-    entrada2=Entry(datum)
-    entrada2.place(x=400, y=50)
-    
-    # POSICION EN LATITUD Y LONGITUD
-    
-    Label(datum, text ="Posición LKP", font=('Raleway', 12)).place(x=240, y=110)
-    
-    # Latitud LKP
-    latitud_LKP=Label(datum, text='Latitud: ', font=('Raleway', 11))
-    latitud_LKP.place(x=50, y=150)
-    entrada3=Entry(datum)
-    entrada3.place(x=150, y=150)
-
-    # Longitud LKP
-    longitud_LKP=Label(datum, text='Longitud: ', font=('Raleway', 11))
-    longitud_LKP.place(x=300, y=150)
-    entrada4=Entry(datum)
-    entrada4.place(x=400, y=150)
 
 # Botón ENTER
 boton=tk.Button(text='ENTER', bg = "gray", fg="white", command = datum)
