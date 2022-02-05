@@ -13,24 +13,12 @@ root.title('SARIApp v.22.0')
 canvas=tk.Canvas(root, width=300, height=400)
 canvas.grid(columnspan=5, rowspan=5)
 
-'''
-root = Tk()     #you must create an instance of Tk() first
-root.geometry('700x600+0+0')
-root.config(bg='blue')
-root.title('Ejemplo de Imagenes')
-'''
 #Creación de imagenes
 route='D:/GitHub Project/SARIApp_Python/Imagenes/'
 #Imagen 1
 imagen1=PhotoImage(file=route +'HELO1_tranp.png')
 imagen1 = imagen1.subsample(2, 2) 
 label_imagen1=Label(root, image=imagen1).grid(column=0, row=1)
-'''
-#Imagen 2
-imagen2=PhotoImage(file='Imagenes/HELO.png')
-imagen2 = imagen2.subsample(3, 4) 
-label_imagenL=Label(root, image=imagen2).grid(column=2, row=1, padx= 0, pady=20)
-'''
 
 def datum(): 
     
@@ -38,7 +26,6 @@ def datum():
     datum.title("SARIApp_Data") 
     datum.geometry("600x400")
     
-
     # INCLUIMOS PANEL PARA LAS PESTAÑAS
     nb=ttk.Notebook(datum)
     nb.pack(fill='both', expand='yes')
@@ -138,9 +125,7 @@ def datum():
     
     # Botón SALIR
     boton1=tk.Button(datum, text='SALIR', bg = "gray", fg="white", command=quit)
-    boton1.place(x=280, y=350, width=100, height=30)
-    
-    
+    boton1.place(x=280, y=350, width=100, height=30)    
 
 # Botón ENTER
 boton=tk.Button(text='ENTER', bg = "gray", fg="white", command = datum)
