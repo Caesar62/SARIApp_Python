@@ -9,6 +9,7 @@ from datetime import datetime, date, time, timedelta
 root = tk.Tk()
 #root.geometry('+%d+%d'%(400,300)) #Place GUI at x=350, y=10
 #root.config(bg='blue')
+#root.state(newstate = "normal")
 root.title('SARIApp v.22.0')
 canvas=tk.Canvas(root, width=300, height=400)
 canvas.grid(columnspan=5, rowspan=5)
@@ -22,7 +23,8 @@ label_imagen1=Label(root, image=imagen1).grid(column=0, row=1)
 
 def datum(): 
     
-    datum = Toplevel(root) 
+    datum = Toplevel(root)
+    #datum.state(newstate = "withdraw") 
     datum.title("SARIApp_Data") 
     datum.geometry("600x400")
     
@@ -85,17 +87,17 @@ def datum():
         # Pasar la latitud de ggmm.mN/S a gg.ggg
         lat0=plat0.get()
         latg=lat0[0:2]
-        latm=lat0[2:6]
-        latf=lat0[6:7]
+        latm=lat0[3:7]
+        latf=lat0[7:8]
         lat0=(float(latg)+float(latm)/60)
         if latf != "N":
             lat0 = 0 - lat0
             
         # Pasar la Longitud de gggmm.mE/W a gg.ggg
         lon0=plon0.get()
-        long=lon0[0:3]
-        lonm=lon0[3:7]
-        lonf=lon0[7:8]
+        long=lon0[0:4]
+        lonm=lon0[5:8]
+        lonf=lon0[8:9]
         lon0=(float(long)+float(lonm)/60)
         if lonf != "E":
             lon0 = 0 - lon0
@@ -114,10 +116,11 @@ def datum():
         diferencia_horas=('{0:.2f}'.format(diferencia_horas))
                 
         #labeltime=Label(datum, text=datetime_object).place(x=400, y=50)
-        #labellat=Label(datum, text =lat0).place(x=250, y=100)
-        #labellon=Label(datum, text =lon0).place(x=500, y=100)
+        #labellat=Label(p1, text =lat0).place(x=170, y=160)
+        #labellon=Label(p1, text =lon0).place(x=390, y=160)
         #labeltime2=Label(datum, text=datetime_object_2).place(x=400, y=200)
-        labeldif_time=Label(datum, text=diferencia_horas, font=('Raleway 12' )).place(x=290, y=270)
+        labeldif_time=Label(p1, text=diferencia_horas, font=('Arial 12' )).place(x=290, y=250)
+        
         
     # Botón ENTER2
     boton=tk.Button(datum, text='ENTER', bg = "gray", fg="white", command = cambio_posicion)
