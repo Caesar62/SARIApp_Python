@@ -10,9 +10,10 @@ root = tk.Tk()
 #root.geometry('+%d+%d'%(400,300)) #Place GUI at x=350, y=10
 #root.config(bg='blue')
 #root.state(newstate = "normal")
+root.geometry("465x400+300+150")
 root.title('SARIApp v.22.0')
-canvas=tk.Canvas(root, width=300, height=400)
-canvas.grid(columnspan=5, rowspan=5)
+#canvas=tk.Canvas(root, width=300, height=400)
+#canvas.grid(columnspan=5, rowspan=5)
 
 #Creación de imagenes
 route='D:/GitHub Project/SARIApp_Python/Imagenes/'
@@ -22,11 +23,10 @@ imagen1 = imagen1.subsample(2, 2)
 label_imagen1=Label(root, image=imagen1).grid(column=0, row=1)
 
 def datum(): 
-    
+    root.withdraw() # Cierra la ventana anterior
     datum = Toplevel(root)
-    #datum.state(newstate = "withdraw") 
-    datum.title("SARIApp_Data") 
-    datum.geometry("600x400")
+    datum.title('SARIApp v.22.0') 
+    datum.geometry("600x400+300+150")
     
     # INCLUIMOS PANEL PARA LAS PESTAÑAS
     nb=ttk.Notebook(datum)
@@ -37,16 +37,17 @@ def datum():
     p2=ttk.Frame(nb)
     
     # AGREGAMOS PESTAÑAS
-    nb.add(p1, text='Pestaña1')
-    nb.add(p2, text='Pestaña2')
+    nb.add(p1, text='Index')
+    nb.add(p2, text='ASW')
     
-    # TITULO DE LA PESTAÑA
+    #####################   PESTAÑA 1    #######################
+    
     labelitle1=Label(p1, text ="Introducir Datos del IAMSAR", font=('Raleway 14 underline' ))
     labelitle1.pack()
     
     # Fecha Hora LKP
     fecha_LKP=Label(p1, text='Fecha LKP: ', font=('Raleway', 11))
-    fecha_LKP.place(x=180, y=50)
+    fecha_LKP.place(x=180, y=50)  
     time0=tk.StringVar()
     entrada1=Entry(p1, textvariable=time0)
     entrada1.place(x=290, y=50)
@@ -60,7 +61,7 @@ def datum():
     
     # POSICION EN LATITUD Y LONGITUD
     
-    Label(datum, text ="Posición LKP", font=('Raleway', 12)).place(x=240, y=120)
+    Label(p1, text ="Posición LKP", font=('Raleway', 12)).place(x=240, y=100)
     
     # Latitud LKP
     latitud_LKP=Label(p1, text='Latitud: ', font=('Raleway', 11))
@@ -114,21 +115,37 @@ def datum():
         diferencia_days= (datetime_object_2 - datetime_object)/ timedelta(days=1)
         diferencia_horas=diferencia_days*24
         diferencia_horas=('{0:.2f}'.format(diferencia_horas))
-                
-        #labeltime=Label(datum, text=datetime_object).place(x=400, y=50)
-        #labellat=Label(p1, text =lat0).place(x=170, y=160)
-        #labellon=Label(p1, text =lon0).place(x=390, y=160)
-        #labeltime2=Label(datum, text=datetime_object_2).place(x=400, y=200)
-        labeldif_time=Label(p1, text=diferencia_horas, font=('Arial 12' )).place(x=290, y=250)
+        
+        #######   DATOS FINALES   ######
+               
+        #labeltime=Label(datum, text=datetime_object).place(x=400, y=50)                            # Fecha_Hora LKP
+        #labellat=Label(p1, text =lat0).place(x=170, y=160)                                         # Latitud LKP (GG.ggg N/S)
+        #labellon=Label(p1, text =lon0).place(x=390, y=160)                                         # Longitud LKP (GGG.ggg E/W)
+        #labeltime2=Label(datum, text=datetime_object_2).place(x=400, y=200)                        # Fecha_Hora Datum
+        labeldif_time=Label(p1, text=diferencia_horas, font=('Arial 12' )).place(x=290, y=250)      # Intervalo de tiempo (HH.hh)
         
         
     # Botón ENTER2
-    boton=tk.Button(datum, text='ENTER', bg = "gray", fg="white", command = cambio_posicion)
-    boton.place(x=175, y=350, width=100, height=30)
+    boton=tk.Button(p1, text='ENTER', bg = "gray", fg="white", command = cambio_posicion)
+    boton.place(x=170, y=300, width=100, height=30)
     
     # Botón SALIR
-    boton1=tk.Button(datum, text='SALIR', bg = "gray", fg="white", command=quit)
-    boton1.place(x=280, y=350, width=100, height=30)    
+    boton1=tk.Button(p1, text='SALIR', bg = "gray", fg="white", command=quit)
+    boton1.place(x=300, y=300, width=100, height=30)    
+
+    #####################   PESTAÑA 2    #######################
+    
+    labelitle2=Label(p2, text ="Introducir Viento en Superficie (ASW)", font=('Raleway 14 underline' ))
+    labelitle2.pack()
+    
+    # Botón ENTER2
+    boton=tk.Button(p2, text='ENTER', bg = "gray", fg="white", command = cambio_posicion)
+    boton.place(x=170, y=300, width=100, height=30)
+    
+    # Botón SALIR
+    boton1=tk.Button(p2, text='SALIR', bg = "gray", fg="white", command=quit)
+    boton1.place(x=300, y=300, width=100, height=30)    
+    
 
 # Botón ENTER
 boton=tk.Button(text='ENTER', bg = "gray", fg="white", command = datum)
