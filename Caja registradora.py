@@ -11,14 +11,13 @@ class Interfaz:
         self.cajaTotal=IntVar()
         self.total = 0
         self.dibujarComponentes()
-        
-        
-    # Creación de la ventana
-    
+             
+    # Creación de la ventana y todos sus componentes
     def dibujarComponentes(self):
         # Creación de la Ventana
         self.ventana.title('Caja Registradora')
         self.ventana.geometry('650x450')
+        # Creación de los Labels
         Label(self.ventana, text='Seleciona tu producto: ').place(x=10, y=10)
         Label(self.ventana, text='Selecciona la cantidad: ').place(x=10, y=60)
         Label(self.ventana, text='El total es: ').place(x=450, y=400)
