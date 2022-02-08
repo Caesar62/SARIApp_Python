@@ -5,6 +5,15 @@ from tkinter.filedialog import askopenfile
 from PIL import Image, ImageTk
 import datetime
 from datetime import datetime, date, time, timedelta
+from sartools.estima import(    # paquete.modulo  en el paquete estará el __init__.py
+    quita360,
+    deg_to_rad,
+    rad_to_deg,
+    formalat,
+    formalon,
+    Directa,
+    DirectaReverse
+)
 
 root = tk.Tk()
 #root.geometry('+%d+%d'%(400,300)) #Place GUI at x=350, y=10
@@ -137,6 +146,14 @@ def datum():
     
     labelitle2=Label(p2, text ="Introducir Viento en Superficie (ASW)", font=('Raleway 14 underline' ))
     labelitle2.pack()
+    
+    # Intervalo
+    intervalo=Label(p2, text='Intervalo: ', font=('Raleway', 11))
+    intervalo.place(x=100, y=140)
+    intv0=tk.StringVar()
+    entrada3=Entry(p2, textvariable=intv0)
+    entrada3.place(x=170, y=140)
+    
     
     # Botón ENTER2
     boton=tk.Button(p2, text='ENTER', bg = "gray", fg="white", command = cambio_posicion)

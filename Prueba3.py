@@ -1,34 +1,28 @@
-from tkinter import *
+from datetime import datetime, date, time, timedelta
 
-def funcion():
-    Otraventana.state(newstate = "normal")
-    root.state(newstate = "withdraw")
+#H_LKP = str(input("\n\tHora LKP  (dd-mm-yyyy hh:mm)\t:  "))
+#H_DATUM = str(input("\n\tHora Datum  (dd-mm-yyyy hh:mm)\t:  "))
+H_LKP = '22-02-1962 3:50'
+H_DATUM = '24-02-1962 3:50'
 
-def funcion2():
-    Otraventana.state(newstate = "withdraw")
-    root.state(newstate = "normal") #state(newstate = "withdraw")root.deiconify, zoomed()
+# Transformacion del intervalo en horas 
 
-
-root = Tk()
-root.state(newstate = "normal")
-root.geometry("250x150+300+100")
-root.resizable(0, 0)
-root.title("Ventana 1")
-
-abrirVentana2 = Button(root, text="Abrir ventana 2", bg="green", font= ("Times New Roman", 12), fg="yellow", command=funcion)
-abrirVentana2.pack()
-
-Otraventana = Toplevel()
-Otraventana.state(newstate = "withdraw")
-Otraventana.geometry("250x150+300+100")
-Otraventana.title("Ventana 2")
-
-miEtiqueta = Label(Otraventana, text="Bienvenido a la ventana 2", bg="#252850", font=("Times New Roman", 12), fg="yellow")
-miEtiqueta.pack()
-
-abrirVentana1 = Button(Otraventana, text="Abrir ventana principal", bg="green", font= ("Times New Roman", 12), fg="yellow", command=funcion2)
-abrirVentana1.pack()
+format = "%d-%m-%Y %H:%M"
+datetime_object = datetime.strptime(H_LKP, format)
 
 
-Otraventana.mainloop()
-root.mainloop()
+format = "%d-%m-%Y %H:%M"
+datetime_object_2 = datetime.strptime(H_DATUM, format)
+
+diferencia_days= (datetime_object_2 - datetime_object)/ timedelta(days=1)
+diferencia_horas=diferencia_days*24
+#diferencia_horas=('{0:.2f}'.format(diferencia_horas))
+
+print(datetime_object)
+print(datetime_object_2)
+print(diferencia_horas)
+
+INTERVALO=int(input('Intervalo en minutos\t:\t'))
+N_INTERVALOS = int(diferencia_horas/(INTERVALO/60))
+
+print(N_INTERVALOS)
