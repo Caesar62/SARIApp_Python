@@ -149,16 +149,47 @@ boton1.place(x=450, y=400, width=100, height=30)
 labelitle2=Label(p2, text ="Introducir Viento en Superficie (ASW)", font=('Raleway 14 underline' ))
 labelitle2.pack()
 
-# Intervalo
+# Intervalo en tiempo
 intervalo=Label(p2, text='Intervalo: ', font=('Raleway', 11))
 intervalo.place(x=100, y=140)
 intv0=tk.StringVar()
-entrada3=Entry(p2, textvariable=intv0)
-entrada3.place(x=170, y=140)
+entrada5=Entry(p2, textvariable=intv0)
+entrada5.place(x=170, y=140)
 
+print(type(entrada5))
+print(entrada5)
+
+def enter2():
+       
+    # Transformacion del intervalo en horas 
+    string_date = time0.get()
+    format = "%d/%m/%Y %H:%M"
+    datetime_object = datetime.strptime(string_date, format)
+    
+    string_date_2 = time1.get()
+    format = "%d/%m/%Y %H:%M"
+    datetime_object_2 = datetime.strptime(string_date_2, format)
+    
+    diferencia_days= (datetime_object_2 - datetime_object)/ timedelta(days=1)
+    diferencia_minutos=diferencia_days*24*60
+    diferencia_minutos=('{0:.2f}'.format(diferencia_minutos))
+    diferencia_minutos=int(float(diferencia_minutos))
+    
+    labeldif_time_1=Label(p1, text=diferencia_minutos, font=('Arial 12' )).place(x=430, y=320)
+    
+    print(type(diferencia_minutos))
+    print(diferencia_minutos)
+    print()
+    print(type(entrada5))
+    print(entrada5)
+    
+    # Numero de Intervalos
+    N_intervalos= str(diferencia_minutos/entrada5)
+    labelN_intervalos=Label(p2, text=N_intervalos, font=('Arial 12' )).place(x=430, y=320) 
+    
 
 # Botón ENTER2
-boton=tk.Button(p2, text='ENTER', bg = "gray", fg="white", command = cambio_posicion)
+boton=tk.Button(p2, text='ENTER', bg = "gray", fg="white", command = enter2)
 boton.place(x=170, y=300, width=100, height=30)
 
 # Botón SALIR
