@@ -1,9 +1,9 @@
 from datetime import datetime, date, time, timedelta
 
-#H_LKP = str(input("\n\tHora LKP  (dd-mm-yyyy hh:mm)\t:  "))
-#H_DATUM = str(input("\n\tHora Datum  (dd-mm-yyyy hh:mm)\t:  "))
-H_LKP = '22-02-1962 3:50'
-H_DATUM = '24-02-1962 3:50'
+H_LKP = str(input("\n\tHora LKP  (dd-mm-yyyy hh:mm)\t:  "))
+H_DATUM = str(input("\n\tHora Datum  (dd-mm-yyyy hh:mm)\t:  "))
+#H_LKP = '22-02-1962 3:50'
+#H_DATUM = '24-02-1962 3:50'
 
 # Transformacion del intervalo en horas 
 

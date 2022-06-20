@@ -146,8 +146,7 @@ boton1.place(x=450, y=400, width=100, height=30)
 
 #####################   PESTAÑA 2    #######################
 
-labelitle2=Label(p2, text ="Introducir Viento en Superficie (ASW)", font=('Raleway 14 underline' ))
-labelitle2.pack()
+labelitle2=Label(p2, text ="Introducir Viento en Superficie (ASW)", font=('Raleway 14 underline' )).pack()
 
 # Intervalo en tiempo
 intervalo=Label(p2, text='Intervalo: ', font=('Raleway', 11))
@@ -155,9 +154,6 @@ intervalo.place(x=100, y=140)
 intv0=tk.StringVar()
 entrada5=Entry(p2, textvariable=intv0)
 entrada5.place(x=170, y=140)
-
-print(type(entrada5))
-print(entrada5)
 
 def enter2():
        
@@ -175,7 +171,7 @@ def enter2():
     diferencia_minutos=('{0:.2f}'.format(diferencia_minutos))
     diferencia_minutos=int(float(diferencia_minutos))
     
-    labeldif_time_1=Label(p1, text=diferencia_minutos, font=('Arial 12' )).place(x=430, y=320)
+    labeldif_time_1=Label(p2, text=diferencia_minutos, font=('Arial 12' )).place(x=430, y=320)
     
     print(type(diferencia_minutos))
     print(diferencia_minutos)
@@ -184,7 +180,7 @@ def enter2():
     print(entrada5)
     
     # Numero de Intervalos
-    N_intervalos= str(diferencia_minutos/entrada5)
+    N_intervalos= int(diferencia_minutos/(entrada5))
     labelN_intervalos=Label(p2, text=N_intervalos, font=('Arial 12' )).place(x=430, y=320) 
     
 

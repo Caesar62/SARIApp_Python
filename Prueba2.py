@@ -1,23 +1,29 @@
-from datetime import datetime
+# Import the required libraries
+from tkinter import *
 
-while True:
-   try:
-       fecha_str = input('\n Ingrese fecha ==> ejemplo "18/01/1952 23:45"...: ')
-       fecha = datetime.strptime(fecha_str, '%d/%m/%Y %H:%M')
-       break
-   except:
-       print("\n No ha ingresado una fecha correcta...")
+# Create an instance of tkinter frame or window
+win=Tk()
 
-print("\n ", fecha)
-'''
+# Set the size of the tkinter window
+win.geometry("700x350")
 
-dt_string = "12/11/2018 09:15:32"
+def cal_sum():
+   t1=int(a.get())
+   t2=int(b.get())
+   sum=t1+t2
+   label.config(text=sum)
 
-# Considering date is in dd/mm/yyyy format
-dt_object1 = datetime.strptime(dt_string, "%d/%m/%Y %H:%M:%S")
-print("dt_object1 =", dt_object1)
+# Create an Entry widget
+Label(win, text="Enter First Number", font=('Calibri 10')).pack()
+a=Entry(win, width=35)
+a.pack()
+Label(win, text="Enter Second Number", font=('Calibri 10')).pack()
+b=Entry(win, width=35)
+b.pack()
 
-# Considering date is in mm/dd/yyyy format
-dt_object2 = datetime.strptime(dt_string, "%m/%d/%Y %H:%M:%S")
-print("dt_object2 =", dt_object2)
-'''
+label=Label(win, text="Total Sum : ", font=('Calibri 15'))
+label.pack(pady=20)
+
+Button(win, text="Calculate Sum", command=cal_sum).pack()
+
+win.mainloop()
