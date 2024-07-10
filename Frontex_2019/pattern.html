@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a624bc34bb184b51932cee4f645e8ec5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.css"/>
+    <script src="https://rawcdn.githack.com/ljagis/leaflet-measure/2.1.7/dist/leaflet-measure.js"></script>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/ljagis/leaflet-measure/2.1.7/dist/leaflet-measure.css"/>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_a624bc34bb184b51932cee4f645e8ec5" ></div>
+        
+</body>
+<script>    
+    
+            var map_a624bc34bb184b51932cee4f645e8ec5 = L.map(
+                "map_a624bc34bb184b51932cee4f645e8ec5",
+                {
+                    center: [43.5, -3.75],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 9,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_da70ba5f51da445bacc987aef7cee4b4 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_a624bc34bb184b51932cee4f645e8ec5);
+        
+    
+            var options = {
+              position: "topleft",
+              draw: {},
+              edit: {},
+            }
+            // FeatureGroup is to store editable layers.
+            var drawnItems = new L.featureGroup().addTo(
+                map_a624bc34bb184b51932cee4f645e8ec5
+            );
+            options.edit.featureGroup = drawnItems;
+            var draw_control_b7a3d60f9211441da59a586b027687e4 = new L.Control.Draw(
+                options
+            ).addTo( map_a624bc34bb184b51932cee4f645e8ec5 );
+            map_a624bc34bb184b51932cee4f645e8ec5.on(L.Draw.Event.CREATED, function(e) {
+                var layer = e.layer,
+                    type = e.layerType;
+                var coords = JSON.stringify(layer.toGeoJSON());
+                layer.on('click', function() {
+                    alert(coords);
+                    console.log(coords);
+                });
+                drawnItems.addLayer(layer);
+             });
+            map_a624bc34bb184b51932cee4f645e8ec5.on('draw:created', function(e) {
+                drawnItems.addLayer(e.layer);
+            });
+            
+        
+    
+        function geo_json_594ecd3ef94e4975a88873d79fab9f6e_onEachFeature(feature, layer) {
+            layer.on({
+                click: function(e) {
+                    map_a624bc34bb184b51932cee4f645e8ec5.fitBounds(e.target.getBounds());
+                }
+            });
+        };
+        var geo_json_594ecd3ef94e4975a88873d79fab9f6e = L.geoJson(null, {
+                onEachFeature: geo_json_594ecd3ef94e4975a88873d79fab9f6e_onEachFeature,
+            
+        }).addTo(map_a624bc34bb184b51932cee4f645e8ec5);
+            geo_json_594ecd3ef94e4975a88873d79fab9f6e.addData({"features": [{"geometry": {"coordinates": [-3.75, 43.5], "type": "Point"}, "properties": {"name": "CSP"}, "type": "Feature"}, {"geometry": {"coordinates": [-3.8316578293907373, 43.55892556509888], "type": "Point"}, "properties": {"name": "ESP"}, "type": "Feature"}, {"geometry": {"coordinates": [[-3.75, 43.5], [-3.424425040577808, 43.73570226039551], [-3.4407373969248307, 43.74748737341529], [-3.7663761875417547, 43.511785113019776], [-3.7826278854169257, 43.52357022603955], [-3.456925224788756, 43.759272486435066], [-3.4732440071096375, 43.77105759945484], [-3.7990105765938176, 43.53535533905933], [-3.815268626636952, 43.547140452079105], [-3.489438109423718, 43.78284271247462], [-3.5057633255470946, 43.794627825494395], [-3.8316578293907373, 43.55892556509888]], "type": "LineString"}, "properties": {}, "type": "Feature"}], "type": "FeatureCollection"});
+        
+    
+            var macro_element_e714c432d1c3435f86a1e1b994be56f3 = L.tileLayer.wms(
+                "http://thredds.socib.es/thredds/wms/operational_models/oceanographical/hydrodynamics/wmop/latest.nc?",
+                {"attribution": "", "format": "image/png", "layers": "sea_surface_velocity", "opaciy": 0.4, "styles": "linevec/occam", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_a624bc34bb184b51932cee4f645e8ec5);
+        
+    
+            var macro_element_adaeed230a4f48c3a8ff0f41bfb172a9 = L.tileLayer.wms(
+                "http://puertos2.cesga.es:8080/thredds/wms/dataset-ibi-analysis-forecast-phys-005-001-daily",
+                {"attribution": "", "format": "image/png", "layers": "sea_water_velocity", "opaciy": 0.4, "styles": "linevec/ferret", "transparent": true, "version": "1.1.1"}
+            ).addTo(map_a624bc34bb184b51932cee4f645e8ec5);
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": true, "position": "topright", "title": "Full Screen", "titleCancel": "Exit Full Screen"}
+            ).addTo(map_a624bc34bb184b51932cee4f645e8ec5);
+        
+    
+            var layer_control_a77ce0bf90024502af339a9c8811d7cb = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_da70ba5f51da445bacc987aef7cee4b4,
+                },
+                overlays :  {
+                    "DDD" : geo_json_594ecd3ef94e4975a88873d79fab9f6e,
+                    "womp last" : macro_element_e714c432d1c3435f86a1e1b994be56f3,
+                    "IBI" : macro_element_adaeed230a4f48c3a8ff0f41bfb172a9,
+                },
+            };
+            L.control.layers(
+                layer_control_a77ce0bf90024502af339a9c8811d7cb.base_layers,
+                layer_control_a77ce0bf90024502af339a9c8811d7cb.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_a624bc34bb184b51932cee4f645e8ec5);
+        
+    
+            var measure_control_b3eb4a14a56540c48843cd5531c91ee9 = new L.Control.Measure(
+                {"position": "topright", "primaryAreaUnit": "sqmeters", "primaryLengthUnit": "meters", "secondaryAreaUnit": "acres", "secondaryLengthUnit": "miles"});
+            map_a624bc34bb184b51932cee4f645e8ec5.addControl(measure_control_b3eb4a14a56540c48843cd5531c91ee9);
+
+        
+</script>

@@ -1,0 +1,24 @@
+
++-----------------------+
+|    SEARCH PATTERN     |
++-----------------------+
+CSP			:  43 30.000 N  003 15.000 W
+CSC			:  45.0
+LENGHT			:  12.0
+SPACING			:  1.0
+TURN			:  DEFAULT RIGHT
+LEGS			:  6
+PATTERN TOTAL LENGTH	:  77.0 NM
+ESP			:  43 33.536 N  003 19.890 W
+
++-----------------------+
+|AW 139 FMS PARAMETERS  |
++-----------------------+
+SEARCH TYPE		:  PARALLEL PATTERN SEARCH
+1L	START POSICION	:  43 30.000 N 003 15.000 W
+2L	TURN DIRECTION	:  DEFAULT (RIGHT)  
+2R	INITIAL TRACK	:  45.0
+3L	LEG SPACE	:  1.0
+3R	PATTERN WIDTH	:  6.0
+4L	SPEED		:  DEFAULT 90 KIAS
+4R	PATTERN LENGTH	:  12.0
